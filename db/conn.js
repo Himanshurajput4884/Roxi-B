@@ -16,6 +16,10 @@ const connection = async ()=>{
 
         const response = await axios.get(process.env.API_URL);
         
+        response.data.map((v,i)=>{
+            v.dateOfSale = new Date(v.dateOfSale);
+        });
+        console.log(response.data);
         await Product.insertMany(response.data);
 
     }

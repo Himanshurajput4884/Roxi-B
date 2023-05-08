@@ -30,7 +30,7 @@ const schema = mongoose.Schema({
         require:true,
     },
     dateOfSale:{
-        type: String,
+        type: Date,
         require:true,
     },
 });

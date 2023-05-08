@@ -9,7 +9,12 @@ const IniData = async (req, res) =>{
         const del = await Product.deleteMany({});
 
         const response = await axios.get(process.env.API_URL);
-        
+                
+        response.data.map((v,i)=>{
+            v.dateOfSale = new Date(v.dateOfSale);
+        });
+        console.log(response.data);
+
         await Product.insertMany(response.data);
         
         return res.status(201).json({status:201, success:true});
